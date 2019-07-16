@@ -42,23 +42,25 @@ const sortArray = (yourArray) => {
 
 const findLowPosInt = (yourArray) => {
   var outputValue = yourArray[yourArray.length-1]+1;
-  for (i=yourArray.length; i >= 0; i--) {
+  for (i=yourArray.length; i > 0; i--) {
+    //console.log('loop #',i);
+    if ( yourArray[i-1] < 0) {break;}
     if ( ( yourArray[i]-yourArray[i-1] ) > 1 ) {
       outputValue = yourArray[i-1]+1;
     }
-    console.log('outputValue = ', outputValue);
+    //console.log('outputValue = ', outputValue);
   }
   return outputValue;
 }
 
 var myRandomArray = makeRandomArray(makeRandomNumber());
-console.log('myRandomArray = ', myRandomArray);
+//console.log('myRandomArray = ', myRandomArray);
 var sortedArray = sortArray(myRandomArray);
-console.log('sortedArray = ', sortedArray);
+//console.log('sortedArray = ', sortedArray);
 var final = findLowPosInt(sortedArray);
 
 $(document).ready(function() {
   $('#output-section-1').text(myRandomArray);
   $('#output-section-2').text(sortedArray);
-  $('#output-section-3').text(sortedArray);
+  $('#output-section-3').text(final);
   });
