@@ -8,11 +8,49 @@ For example, the input [3, 4, -1, 1] should give 2. The input [1, 2, 0] should g
 You can modify the input array in-place.
 */
 
+const makeRandomNumber = () => {
+  return Math.ceil(Math.random()*10);
+}
 
+const makeRandomNumberNegPos = () => {
+  return Math.ceil(Math.random()*20-10);
+}
+
+const makeRandomArray = (size) => {
+  outputArray = [];
+  for (i=0; i<size; i++) {
+    outputArray.push(makeRandomNumberNegPos());
+  }
+  return outputArray;
+}
+
+const sortArray = (yourArray) => {
+  outputArray = [];
+  for (i=0; i<yourArray.length; i++) {
+    for (j=0; j<yourArray.length; j++) {
+      if ( yourArray[j] > yourArray[j+1] ) {
+        tempVar1 = yourArray[j];
+        tempVar2 = yourArray[j+1];
+        yourArray[j] = tempVar2;
+        yourArray[j+1] = tempVar1;
+      }
+    //console.log('turn(i,j) = ', i,', ',j, ' value: ',yourArray)
+    }
+  }
+  return yourArray;
+}
+
+const findLowPosInt = (yourArray) => {
+
+}
+
+var myRandomArray = makeRandomArray(makeRandomNumber());
+console.log('myRandomArray = ', myRandomArray);
+var sortedArray = sortArray(myRandomArray);
+console.log('sortedArray = ', sortedArray);
 
 $(document).ready(function() {
-  $('#output-section-1').text('test1');
-  $('#output-section-2').text(serialize('test2'));
-  $('#output-section-3').text(deserialize(serialize('test3')));
-  $('#output-section-4').text(deserialize('test4'));
+  $('#output-section-1').text(myRandomArray);
+  $('#output-section-2').text(sortedArray);
+  $('#output-section-3').text(sortedArray);
   });
