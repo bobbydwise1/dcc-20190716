@@ -41,13 +41,21 @@ const sortArray = (yourArray) => {
 }
 
 const findLowPosInt = (yourArray) => {
-
+  var outputValue = yourArray[yourArray.length-1]+1;
+  for (i=yourArray.length; i >= 0; i--) {
+    if ( ( yourArray[i]-yourArray[i-1] ) > 1 ) {
+      outputValue = yourArray[i-1]+1;
+    }
+    console.log('outputValue = ', outputValue);
+  }
+  return outputValue;
 }
 
 var myRandomArray = makeRandomArray(makeRandomNumber());
 console.log('myRandomArray = ', myRandomArray);
 var sortedArray = sortArray(myRandomArray);
 console.log('sortedArray = ', sortedArray);
+var final = findLowPosInt(sortedArray);
 
 $(document).ready(function() {
   $('#output-section-1').text(myRandomArray);
